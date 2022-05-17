@@ -13,13 +13,9 @@ def browser():
 
     opts = FirefoxOptions()
     opts.add_argument("--headless")
-    driver = webdriver.Firefox(options=opts)
-    
-    driver.implicitly_wait(10)
-
-    yield driver
-
-    driver.quit()
+    browser = webdriver.Firefox(options=opts)
+    yield browser
+    browser.quit()
 
 
 def test_basic_search(browser):
