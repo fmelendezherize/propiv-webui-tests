@@ -76,6 +76,29 @@ class MainPage(BasePage):
         element = self.driver.find_element(by=By.XPATH, value=xpath_element)
         element.click()
 
+    def get_number_properties_cards(self):
+        find_value = "ts-card"
+        elements = self.driver.find_elements(by=By.CLASS_NAME, value=find_value)
+
+        return len(elements)
+
+    def get_number_broker_cards(self):
+        find_value = "ts-card-broker"
+        elements = self.driver.find_elements(by=By.CLASS_NAME, value=find_value)
+
+        return len(elements)
+
+    def click_button_Ir_Blog(self):
+
+        xpath_element = '/html/body/div/main/section[8]/div/div[3]/div/a[@href="/blog/"]'
+
+        # wait = WebDriverWait(self.driver, MainPage.WAIT_TIME)
+        # wait.until(ec.element_to_be_clickable((By.XPATH, xpath_element)))
+
+        # busco elemento por href
+        element = self.driver.find_element(by=By.XPATH, value=xpath_element)
+        element.click()
+
 
 class ListOfPropiedadesResultPage(BasePage):
     """Pagina de listado de propiedades resultado de consultas"""

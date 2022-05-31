@@ -86,3 +86,26 @@ def test_click_card_propiedades_todas(browser):
     listado_propiedades_page = page.ListOfPropiedadesResultPage(browser)
     assert listado_propiedades_page.is_title_listado_propiedades() is True
     assert listado_propiedades_page.is_todas_result() is True
+
+
+def test_properties_cards_number(browser):
+    browser.get("https://propiv.com/")
+
+    main_page = page.MainPage(browser)
+    assert main_page.get_number_properties_cards() is 16
+
+
+def test_brokers_cards_number(browser):
+    browser.get("https://propiv.com/")
+
+    main_page = page.MainPage(browser)
+    assert main_page.get_number_broker_cards() is 8
+
+
+def test_click_blog_button(browser):
+    browser.get("https://propiv.com/")
+
+    main_page = page.MainPage(browser)
+    main_page.click_button_Ir_Blog()
+
+    assert "Blog" in browser.title is False
