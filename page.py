@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
 
 
 class BasePage(object):
@@ -12,34 +14,66 @@ class BasePage(object):
 class MainPage(BasePage):
     """Home page action methods come here."""
 
+    WAIT_TIME = 20
+
     def is_title_matches(self):
         """Verifies that the hardcoded text "Propiv" appears in page title"""
 
         return "Propiv" in self.driver.title
 
     def click_button_list_of_departamentos(self):
+
+        xpath_element = '//a[@href="/listado-de-propiedades/?property_type=2"]'
+
+        wait = WebDriverWait(self.driver, MainPage.WAIT_TIME)
+        wait.until(ec.presence_of_element_located((By.XPATH, xpath_element)))
+
         # busco elemento por href
-        element = self.driver.find_element_by_xpath('//a[@href="/listado-de-propiedades/?property_type=2"]')
+        element = self.driver.find_element(by=By.XPATH, value=xpath_element)
         element.click()
 
     def click_button_list_of_oficinas(self):
         # busco elemento por href
-        element = self.driver.find_element_by_xpath('//a[@href="/listado-de-propiedades/?property_type=17"]')
+        xpath_element = '//a[@href="/listado-de-propiedades/?property_type=17"]'
+
+        wait = WebDriverWait(self.driver, MainPage.WAIT_TIME)
+        wait.until(ec.presence_of_element_located((By.XPATH, xpath_element)))
+
+        # busco elemento por href
+        element = self.driver.find_element(by=By.XPATH, value=xpath_element)
         element.click()
 
     def click_button_list_of_casas(self):
         # busco elemento por href
-        element = self.driver.find_element_by_xpath('//a[@href="/listado-de-propiedades/?property_type=1"]')
+        xpath_element = '//a[@href="/listado-de-propiedades/?property_type=1"]'
+
+        wait = WebDriverWait(self.driver, MainPage.WAIT_TIME)
+        wait.until(ec.presence_of_element_located((By.XPATH, xpath_element)))
+
+        # busco elemento por href
+        element = self.driver.find_element(by=By.XPATH, value=xpath_element)
         element.click()
 
     def click_button_list_of_terrenos(self):
         # busco elemento por href
-        element = self.driver.find_element_by_xpath('//a[@href="/listado-de-propiedades/?property_type=7"]')
+        xpath_element = '//a[@href="/listado-de-propiedades/?property_type=7"]'
+
+        wait = WebDriverWait(self.driver, MainPage.WAIT_TIME)
+        wait.until(ec.presence_of_element_located((By.XPATH, xpath_element)))
+
+        # busco elemento por href
+        element = self.driver.find_element(by=By.XPATH, value=xpath_element)
         element.click()
 
     def click_button_list_of_todas(self):
         # busco elemento por href
-        element = self.driver.find_element_by_xpath('//a[@href="/listado-de-propiedades/"]')
+        xpath_element = '//a[@href="/listado-de-propiedades/"]'
+
+        wait = WebDriverWait(self.driver, MainPage.WAIT_TIME)
+        wait.until(ec.presence_of_element_located((By.XPATH, xpath_element)))
+
+        # busco elemento por href
+        element = self.driver.find_element(by=By.XPATH, value=xpath_element)
         element.click()
 
 

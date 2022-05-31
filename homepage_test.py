@@ -10,7 +10,8 @@ import page
 def browser():
     opts = FirefoxOptions()
     opts.add_argument("--headless")
-    browser = webdriver.Firefox(options=opts)
+    browser = webdriver.Firefox(executable_path="/usr/bin/geckodriver", options=opts)
+
     # return
     yield browser
     # retake
@@ -27,9 +28,11 @@ def test_title_home(browser):
 
 def test_click_card_departamentos(browser):
     """Check navigation by home card Departamentos"""
+
     browser.get("https://propiv.com/")
 
     main_page = page.MainPage(browser)
+
     main_page.click_button_list_of_departamentos()
 
     listado_propiedades_page = page.ListOfPropiedadesResultPage(browser)
